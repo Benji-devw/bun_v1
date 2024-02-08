@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  // previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Matches {
+  id            Int              @id @default(autoincrement())
+  media_video   String
+  team1_name    String           @db.VarChar(155)
+  team2_name    String           @db.VarChar(155)
+  team1_score   Int
+  team2_score   Int
+  match_average Float
+  encounter     String
+  players       PlayersMatches[]
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+}
+
+model Players {
+  id             Int              @id @default(autoincrement())
+  name           String           @db.VarChar(155)
+  media          String           @db.VarChar(255)
+  team           String           @db.VarChar(155)
+  comment_team   String?
+  comment_player String?
+  player_average Float
+  golden         Int
+  golden_old     Int
+  matches        PlayersMatches[]
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+}
+
+model PlayersMatches {
+  id        Int      @id @default(autoincrement())
+  goals     Int
+  assists   Int
+  shoots    Int
+  average   Float
+  player_id Players  @relation(fields: [playerId], references: [id])
+  match_id  Matches  @relation(fields: [matchId], references: [id])
+  playerId  Int      @unique
+  matchId   Int      @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([playerId, matchId])
+}

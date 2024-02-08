@@ -3,16 +3,19 @@
   "module": "index.ts",
   "type": "module",
   "scripts": {
+    "dev": "bun run --watch index.ts",
     "go": "bun run index.ts"
   },
   "devDependencies": {
     "@types/bun": "^1.0.5",
-    "@types/figlet": "^1.5.8"
+    "@types/figlet": "^1.5.8",
+    "prisma": "^5.9.1"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@prisma/client": "5.9.1",
     "elysia": "^0.8.16",
     "figlet": "^1.7.0"
   }

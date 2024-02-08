@@ -1,11 +1,19 @@
 import figlet from "figlet";
 import {Elysia} from "elysia";
 
+// console.log(process.env.PG_DB_HOST);
+
 
 const app = new Elysia().get("/", () => { "Hello, World!" })
-.get("/post/:id", ({ params: {id} }) => {return {id: id, title: "Title"}} )
-.post("/post", ({ body }) => {return body})
-.listen(3000);
+
+
+app.get("/post/:id", ({ params: {id} }) => {return {id: id, title: "Title"}} )
+
+
+app.post("/post", ({ body }) => {return body})
+
+
+app.listen(3000);
 
 // const server = Bun.serve({
 //   port: 3000,
@@ -17,4 +25,4 @@ const app = new Elysia().get("/", () => { "Hello, World!" })
 // });
 
 // console.log(`Listening on http://localhost:${server.port} ...`);
-console.log(`Listening on http://localhost:3000 ...`);
+console.log(`Elysia is running on ${app.server?.hostname}:${app.server?.port}`);

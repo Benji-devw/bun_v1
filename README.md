@@ -4,6 +4,8 @@ To install dependencies:
 
 ```bash
 bun install
+bunx prisma init
+bunx prisma migrate dev --name create_post_model
 ```
 
 To run:
