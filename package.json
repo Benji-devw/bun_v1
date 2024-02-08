@@ -1,0 +1,19 @@
+{
+  "name": "quickstart",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "go": "bun run index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.0.5",
+    "@types/figlet": "^1.5.8"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "elysia": "^0.8.16",
+    "figlet": "^1.7.0"
+  }
+}
