@@ -19,7 +19,7 @@ model Matches {
   team1_score   Int
   team2_score   Int
   match_average Float
-  encounter     String
+  encounter_date     String
   players       PlayersMatches[]
   createdAt     DateTime         @default(now())
   updatedAt     DateTime         @updatedAt
@@ -46,10 +46,10 @@ model PlayersMatches {
   assists   Int
   shoots    Int
   average   Float
-  player_id Players  @relation(fields: [playerId], references: [id])
-  match_id  Matches  @relation(fields: [matchId], references: [id])
-  playerId  Int      @unique
-  matchId   Int      @unique
+  player    Players  @relation(fields: [playerId], references: [id])
+  match     Matches  @relation(fields: [matchId], references: [id])
+  playerId  Int
+  matchId   Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

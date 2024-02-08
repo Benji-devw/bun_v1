@@ -7,7 +7,7 @@ CREATE TABLE "Matches" (
     "team1_score" INTEGER NOT NULL,
     "team2_score" INTEGER NOT NULL,
     "match_average" DOUBLE PRECISION NOT NULL,
-    "encounter" TEXT NOT NULL,
+    "encounter_date" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -45,12 +45,6 @@ CREATE TABLE "PlayersMatches" (
 
     CONSTRAINT "PlayersMatches_pkey" PRIMARY KEY ("id")
 );
-
--- CreateIndex
-CREATE UNIQUE INDEX "PlayersMatches_playerId_key" ON "PlayersMatches"("playerId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "PlayersMatches_matchId_key" ON "PlayersMatches"("matchId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "PlayersMatches_playerId_matchId_key" ON "PlayersMatches"("playerId", "matchId");

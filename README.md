@@ -6,6 +6,7 @@ To install dependencies:
 bun install
 bunx prisma init
 bunx prisma migrate dev --name create_post_model
+-- bunx prisma db seed
 ```
 
 To run:
